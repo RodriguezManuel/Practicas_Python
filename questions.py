@@ -1,21 +1,32 @@
 import random
 
-words = [
-    "python",
-    "programa",
-    "variable",
-    "funcion",
-    "bucle",
-    "cadena",
-    "entero",
-    "lista",
-]
-word = random.choice(words)  # Elige una palabra al azar de la lista de palabras
+words = {
+    "Nombres de Lenguajes de Programación": ["python"],
+    "Términos de Programación": ["programa", "variable", "funcion", "bucle"],
+    "Tipos de Datos": ["entero", "lista", "cadena"],
+}
 guessed = []
 attempts = 6  # intentos
 score = 0
 print("¡Bienvenido al Ahorcado!")
 print()
+
+# Solicito al usario que elija una categoría.
+
+category = int(
+    input(
+        "Ingrese una cateogoria: 1. Nombres de Lenguajes de Programación, 2. Términos de Programación, 3. Tipos de Datos: "
+    )
+)
+if category == 1:
+    chosen_category = "Nombres de Lenguajes de Programación"
+elif category == 2:
+    chosen_category = "Términos de Programación"
+else:
+    chosen_category = "Tipos de Datos"
+
+# Elijo una palabra al azar de la categoría seleccionada por el usuario
+word = random.choice(words[chosen_category])
 while attempts > 0:
     # Mostrar progreso: letras adivinadas y guiones para las que faltan
     progress = ""  # por cada intento borra el progreso anterior, para luego comprobar atraves de si se agrega o no el guion, si adivino la palabra
